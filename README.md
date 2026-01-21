@@ -2,7 +2,7 @@
 
 A full implementation of the **Distance Vector (RIP-like) routing protocol** in Python, designed to run inside Docker containers for simulating multi-router network topologies.
 
-> **Course**: ECE441 - Computer Networks  
+> **Course**: ECE441 - Network Protocol Design  
 > **Authors**: Nikolaos Kalamaris, Vasileios Grapsopoulos  
 > **University of Thessaly**
 
