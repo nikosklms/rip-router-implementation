@@ -35,7 +35,7 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 │   Hello Sender       │   Periodic DV Sender                 │
 │   (Keepalives)       │   (Every 20s)                        │
 ├──────────────────────┴──────────────────────────────────────┤
-│                  Routing Table Manager                       │
+│                  Routing Table Manager                      │
 │         (with Linux Kernel integration via ip route)        │
 └─────────────────────────────────────────────────────────────┘
 ```
