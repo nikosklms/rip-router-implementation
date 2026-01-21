@@ -67,6 +67,43 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 
 ---
 
+## Reference Topology
+
+The following topology is used for testing and demonstration:
+
+![Network Topology](instructions/topology.png)
+
+### Topology Details
+
+| Router | Connected Networks | Neighbors |
+|--------|-------------------|-----------|
+| Router 1 | 10.10.10.0/24 (Host 1) | Router 2, Router 3 |
+| Router 2 | - | Router 1, Router 3, Router 5 |
+| Router 3 | - | Router 1, Router 2, Router 4 |
+| Router 4 | 30.30.30.0/24 (Host 3) | Router 3, Router 5 |
+| Router 5 | 20.20.20.0/24 (Host 2) | Router 2, Router 4 |
+
+### Running the Reference Topology
+
+After deploying the containers, copy the files and run each router with the following commands:
+
+```bash
+# Copy files to all routers
+for N in 1 2 3 4 5; do
+  docker cp router.py router$N:/
+  docker cp messages/dv_pb2.py router$N:/
+done
+
+# Run each router (in separate terminals)
+docker exec -it router1 python3 router.py r1 5000 5001 192.168.1.3:5000 192.168.1.11:5000
+docker exec -it router2 python3 router.py r2 5000 5001 192.168.1.2:5000 192.168.1.19:5000 192.168.1.35:5000
+docker exec -it router3 python3 router.py r3 5000 5001 192.168.1.10:5000 192.168.1.27:5000
+docker exec -it router4 python3 router.py r4 5000 5001 192.168.1.26:5000 192.168.1.34:5000 192.168.1.43:5000
+docker exec -it router5 python3 router.py r5 5000 5001 192.168.1.18:5000 192.168.1.42:5000
+```
+
+---
+
 ## Quick Start
 
 ### Prerequisites
