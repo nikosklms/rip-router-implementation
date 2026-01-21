@@ -1,0 +1,38 @@
+syntax = "proto3";
+package dv;
+
+// Minimal RIP-like distance-vector messages (no TLV for simplicity).
+// Students can extend to TLV later if desired.
+
+message DVHeader {
+  uint32 version = 1;          // protocol version (1)
+  string router_id = 2;         // unique ID (e.g., "r1" or an IP)
+  uint64 seq = 3;               // per-sender sequence number
+  uint64 sent_at_ms = 4;        // epoch ms
+}
+
+message Route {
+  string prefix = 1;            // CIDR, e.g., "10.1.0.0/24"
+  string next_hop = 2;          // sender's next-hop
+  uint32 metric = 3;            // hop count
+}
+
+message DVMessage {
+  DVHeader header = 1;		// First fields should be the header
+  repeated Route routes = 2;	//Multiple entries for the different routes
+}
+
+message ConnParamMessage {
+  DVHeader header = 1;
+  uint32 port = 2;		// Port number on which the router will be listening
+				// Can be different for each communication pair    
+}
+
+message ConnParamAck {
+  DVHeader header = 1;
+  uint32 port = 2;		// Port nmber on which the receivign router will be listening
+}
+
+message HelloMessage {
+  DVHeader header = 1;		// Just the header is enough for the keepalives
+}

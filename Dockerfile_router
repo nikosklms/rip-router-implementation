@@ -1,0 +1,14 @@
+# Dockerfile for Router
+FROM ubuntu:22.04
+
+# Install networking tools
+RUN apt-get update && apt-get install -y iproute2 iputils-ping net-tools tcpdump traceroute python3 python3-pip
+
+# Install protobuf on the container
+RUN pip install protobuf==5.29.3
+
+# Enable IP forwarding
+RUN sysctl -w net.ipv4.ip_forward=1
+
+# Configure the network interfaces
+CMD  tail -f /dev/null

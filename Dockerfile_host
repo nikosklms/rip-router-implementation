@@ -1,0 +1,8 @@
+# Dockerfile for Host 1
+FROM ubuntu:22.04
+
+# Install networking tools
+RUN apt-get update && apt-get install -y iproute2 iputils-ping net-tools tcpdump traceroute
+
+# Configure the network interface
+CMD    tail -f /dev/null
