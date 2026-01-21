@@ -8,7 +8,7 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---------|-------------|
@@ -67,7 +67,7 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Prerequisites
 
