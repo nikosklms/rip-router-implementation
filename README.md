@@ -1,4 +1,4 @@
-# 🌐 Distance Vector Router Implementation
+# Distance Vector Router Implementation
 
 A full implementation of the **Distance Vector (RIP-like) routing protocol** in Python, designed to run inside Docker containers for simulating multi-router network topologies.
 
@@ -23,7 +23,7 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
@@ -50,11 +50,11 @@ A full implementation of the **Distance Vector (RIP-like) routing protocol** in 
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 .
-├── router.py              # 🌟 Main router implementation
+├── router.py              # Main router implementation
 ├── messages/
 │   ├── dv.proto           # Protocol Buffers message definitions
 │   └── dv_pb2.py          # Generated Python classes
@@ -156,7 +156,7 @@ docker exec -it host1 ping <destination_ip>
 
 ---
 
-## 🔧 How It Works
+## How It Works
 
 ### 1. Neighbor Discovery (TCP)
 When a router starts, it connects to its configured neighbors via TCP. They exchange:
@@ -175,7 +175,7 @@ When a topology change occurs (new route, better path, or dead neighbor), a **tr
 - Better paths (lower metric) replace existing routes
 - Split Horizon with Poison Reverse: routes learned from a neighbor are advertised back with metric = 16 (infinity)
 
-### 4. Kernel Integration ⭐
+### 4. Kernel Integration 
 **This is what makes the router work in the real world, not just virtually.**
 
 When routes are learned or updated, they are installed into the Linux kernel's routing table:
@@ -195,7 +195,7 @@ ip route del <prefix>
 
 ---
 
-## 📊 Sample Output
+## Sample Output
 
 ```
 [14:32:01] [Init] Router Started: Name='r1'
@@ -211,7 +211,7 @@ ip route del <prefix>
 
 ---
 
-## 📝 Protocol Specification
+## Protocol Specification
 
 ### Constants
 | Name | Value | Description |
@@ -228,7 +228,7 @@ See `messages/dv.proto` for the full specification.
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
@@ -239,6 +239,6 @@ See `messages/dv.proto` for the full specification.
 
 ---
 
-## 📄 License
+## License
 
 This project was developed as part of the ECE441 course at the University of Thessaly.
